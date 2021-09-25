@@ -16,11 +16,11 @@ Add the package to your composer.json file
 "require": 
 {
 
-        "tuyapiphp/tuyapiphp": "*",
+        "tuyapiphp/tuyapiphp": "*"
 }
 ```
 
-and run `composer install`
+and run `composer update`
 
 ### Stand Alone:
 
