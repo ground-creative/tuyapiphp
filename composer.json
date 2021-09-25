@@ -5,7 +5,7 @@
 	"keywords": [ "tuya" , "smart life" ] ,
 	"license": "GPL-3.0-or-later" ,
 	"version": "1.0.0" ,
-	"minimum-stability": "dev" ,
+	"minimum-stability": "stable" ,
 	"authors": 
 	[
 		{
