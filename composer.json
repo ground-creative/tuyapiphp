@@ -3,7 +3,7 @@
 	"type": "library" ,
 	"description": "Tuya api home management php client" ,
 	"keywords": [ "tuya" , "smart life" ] ,
-	"license": "GPL V3",
+	"license": "GPL-3.0-or-later" ,
 	"version": "1.0.0" ,
 	"minimum-stability": "dev" ,
 	"authors": 
