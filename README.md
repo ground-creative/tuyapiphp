@@ -16,7 +16,7 @@ add the package to your composer.json file
 {
 
         "tuyapiphp/tuyapiphp": "*",
-`
+}`
 
 ## Basic Usage
 
