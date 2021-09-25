@@ -18,7 +18,7 @@
 	{
 		"psr-4": 
 		{
-			"tuaypiphp\\": "tuyaiphp/tuyapiphp/src"
+			"tuaypiphp\\": "tuyapiphp/tuyapiphp/src"
 		}
 	}
 }
