@@ -1,0 +1,16 @@
+{
+	"name": "tuyapiphp/tuyapiphp" ,	
+	"type": "library" ,
+	"description": "Tuya api home management php client" ,
+	"keywords": [ "tuya" ] ,
+	"homepage": "http://phptoolcase.com" ,
+	"license": "GPL-3.0-or-later" ,
+	"authors": 
+	[
+		{
+			"name": "Carlo Pietrobattista" ,
+			"email": "irony00100@gmail.com" ,
+			"role": "Developer"
+		}
+	] 
+}
