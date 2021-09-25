@@ -5,6 +5,7 @@
 	"keywords": [ "tuya" ] ,
 	"homepage": "http://phptoolcase.com" ,
 	"license": "GPL-3.0-or-later" ,
+	"minimum-stability": "dev"
 	"authors": 
 	[
 		{
