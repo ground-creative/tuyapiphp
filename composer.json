@@ -13,5 +13,14 @@
 			"email": "irony00100@gmail.com" ,
 			"role": "Developer"
 		}
-	] 
+	]  ,
+	{
+		"autoload": 
+		{
+			"psr-4": 
+			{
+				"tuaypiphp\\": "tuaypiphp/tuaypiphp/src"
+			}
+		}
+	}
 }
