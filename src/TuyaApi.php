@@ -32,7 +32,7 @@
 				if ( count( array_intersect_key( array_flip( $this->_required ) , 
 									$config ) ) !== count( $this->_required ) ) 
 				{
-					$msg = "Please set 'accessKey', 'secretKey' and 'baseUrl', aborting!";
+					$msg = 'Please set "accessKey", "secretKey" and "baseUrl", aborting!';
 					throw new \Exception( $msg );
 				}
 			} 
