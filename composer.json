@@ -19,7 +19,7 @@
 		{
 			"psr-4": 
 			{
-				"tuaypiphp\\": "tuaypiphp/tuaypiphp/src"
+				"tuaypiphp": "tuaypiphp/tuaypiphp/src"
 			}
 		}
 	}
