@@ -24,7 +24,7 @@ and run `composer update`
 
 ### Stand Alone:
 
-You must require all the needed classes manually, or you can use an autoloader [like this one](http://phptoolcase.com/guides/ptc-hm-guide.html)
+You must require all the needed classes manually, or you can use an autoloader [like this one](http://phptoolcase.com/guides/ptc-hm-guide.html).
 
 ## Basic Usage
 
