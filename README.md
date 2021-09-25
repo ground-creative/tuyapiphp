@@ -37,7 +37,7 @@ Use these [setup instructions](https://github.com/codetheweb/tuyapi/blob/master/
 	[
 		'accessKey' 	=> 'xxxxxxxxxxxxxxxxx' ,
 		'secretKey' 	=> 'xxxxxxxxxxxxxxxxx' ,
-		'baseUrl'		=> 'https://openapi.tuyaus.com'
+		'baseUrl'	=> 'https://openapi.tuyaus.com'
 	];
 	
 	$tuya = new \tuyapiphp\TuyaApi( $config );
