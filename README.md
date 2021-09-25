@@ -12,11 +12,11 @@ with composer
 
 add the package to your composer.json file
 
-`"require": 
+```"require": 
 {
 
         "tuyapiphp/tuyapiphp": "*",
-}`
+}```
 
 ## Basic Usage
 
