@@ -18,7 +18,7 @@
 	{
 		"psr-4": 
 		{
-			"tuaypiphp\\": "vendor/tuaypiphp/tuaypiphp/src"
+			"tuaypiphp\\": "tuaypiphp/tuaypiphp/src"
 		}
 	}
 }
