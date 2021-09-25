@@ -14,13 +14,11 @@
 			"role": "Developer"
 		}
 	] ,
+	"autoload": 
 	{
-		"autoload": 
+		"psr-4": 
 		{
-			"psr-4": 
-			{
-				"tuaypiphp": "tuaypiphp/tuaypiphp/src"
-			}
+			"tuaypiphp\\": "tuaypiphp/tuaypiphp/src"
 		}
 	}
 }
