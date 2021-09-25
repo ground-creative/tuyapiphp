@@ -1,5 +1,13 @@
 <?php
 
+	/**
+	* PHP TUYA API HOME MANAGEMENT CLIENT
+	* PHP version 5.3+
+	* @category 	Library
+	* @version	1.0.0
+	* @author   	Irony <irony00100@gmail.com>
+	*/
+
 	namespace tuyapiphp;
 
 	Class TuyaApi
