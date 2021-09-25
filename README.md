@@ -4,7 +4,7 @@ This is a simple php client to interact with devices that support the tuya api.
 
 ## Requirements
 
-I believe all is needed is php curl for the requests
+I believe all is needed is php curl for the requests.
 
 ## Installation
 
