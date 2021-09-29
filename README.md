@@ -1,6 +1,6 @@
 # Tuya Api PHP Client
 
-This is a simple php client to interact with devices that support the tuya api.
+This is a simple php client to interact with devices that support the tuya api over the cloud.
 
 ## Requirements
 
