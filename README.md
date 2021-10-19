@@ -1,4 +1,4 @@
-# Tuya Api PHP Client
+# Tuya Cloud Api PHP Client
 
 This is a simple php client to interact with devices that support the tuya api.
 
