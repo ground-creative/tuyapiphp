@@ -19,14 +19,14 @@ Use these [setup instructions](https://github.com/codetheweb/tuyapi/blob/master/
 ### Create new instance
 
 ```
-	const TuyaCloud = require( 'tuyacloudnodejs' );
+const TuyaCloud = require( 'tuyacloudnodejs' );
 
-	let Tuya = new TuyaCloud
-	( {
-		"secretKey" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ,
-		"accessKey" : "XXXXXXXXXXXXXXXXXXX" ,
-		"server": "https://openapi.tuyaus.com"
-	} );
+let Tuya = new TuyaCloud
+( {
+	"secretKey" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ,
+	"accessKey" : "XXXXXXXXXXXXXXXXXXX" ,
+	"server": "https://openapi.tuyaus.com"
+} );
 ```
 ### Get an access token
 
