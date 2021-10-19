@@ -58,7 +58,7 @@ $device_id = 'xxxxxxxxxxxxxxxxxxx';
 // Get a token
 $token = $tuya->token->get_new( )->result->access_token;
 
-// Get list of devices connected with android app
+// Get list of devices connected with tuya/smart life app
 $tuya->devices( $token )->get_app_list( $app_id );
 
 // Get device status
