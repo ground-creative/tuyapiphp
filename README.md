@@ -1,6 +1,6 @@
 # Tuya Api PHP Client
 
-This is a simple php client to interact with devices that support the tuya api over the cloud.
+This is a simple php client to interact with devices that support the tuya api.
 
 ## Requirements
 
@@ -8,9 +8,23 @@ I believe all is needed is php curl for the requests.
 
 ## Installation
 
+### With composer:
+
+Add the package to your composer.json file
+
 ```
-npm install tuyacloudnodejs
+"require": 
+{
+
+        "tuyapiphp/tuyapiphp": "*"
+}
 ```
+
+and run `composer update`
+
+### Stand Alone:
+
+You must require all the needed classes manually, or you can use an autoloader [like this one](http://phptoolcase.com/guides/ptc-hm-guide.html).
 
 ## Basic Usage
 
@@ -19,59 +33,61 @@ Use these [setup instructions](https://github.com/codetheweb/tuyapi/blob/master/
 ### Create new instance
 
 ```
-const TuyaCloud = require( 'tuyacloudnodejs' );
-
-let Tuya = new TuyaCloud
-( {
-	"secretKey" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ,
-	"accessKey" : "XXXXXXXXXXXXXXXXXXX" ,
-	"server": "https://openapi.tuyaus.com"
-} );
+	$config =
+	[
+		'accessKey' 	=> 'xxxxxxxxxxxxxxxxx' ,
+		'secretKey' 	=> 'xxxxxxxxxxxxxxxxx' ,
+		'baseUrl'		=> 'https://openapi.tuyaus.com'
+	];
+	
+	$tuya = new \tuyapiphp\TuyaApi( $config );
 ```
 ### Get an access token
 
 ```
-let data = await Tuya.token( ).get_new( );	
+        $data = $tuya->token->get_new( );	
 ```
 
-### Example operations
+### Example device operations
 
 ```
-( async function( )
-{
-	// set some variables for the example
-	let result = '';
-	let device_id = 'XXXXXXXXXXXXXXXXXXX';
-	let home_id = 'XXXXXXX';
-	let scene_id = 'XXXXXXXXXXXXXX';
-
-	// get an access token
-	let data = await Tuya.token( ).get_new( );
-	let token = data.result.access_token;
-
-	// get device details
-	result = await Tuya.devices( token ).get_details( device_id );
-
-	// post device commands
-	let commands = { "commands": [ { "code": "switch_led" , "value": false } ] };
-	result = await Tuya.devices( token ).post_commands( device_id , commands );
-
-	// get list of scenes
-	result = await Tuya.scenes( token ).get_list( home_id );
-
-	// trigger a scene
-	result = await Tuya.scenes( token ).post_trigger( home_id , scene_id );
-
-} )( );
-```
-## Show all methods
-
-
-
-```
-// call one of the main components (home,scenes,devices,token)
-// example call to show all methods for devices component
-endpoints = Tuya.devices( ).endpoints( );
+	$app_id = 'xxxxxxxxxxxxxxxxxxxx';
 	
+	$device_id = 'xxxxxxxxxxxxxxxxxxx';
+	
+	// Get a token
+	$token = $tuya->token->get_new( )->result->access_token;
+	
+	// Get list of devices connected with android app
+	$tuya->devices( $token )->get_app_list( $app_id );
+	
+	// Get device status
+	$tuya->devices( $token )->get_status( $device_id );
+
+	// Set device name
+	$tuya->devices( $token )->put_name( $device_id , [ 'name' => 'FAN' ] );
+	
+	// Send command to device
+	$payload = [ 'code' => 'switch_1' , 'value' => false ];
+	$tuya->devices( $token )->post_commands( $device_id , [ 'commands' => [ $payload ] ] );
 ```
+
+### Example camera stream
+
+```
+	$app_id = 'xxxxxxxxxxxxxxxxxx';
+	
+	$camera_id = 'xxxxxxxxxxxxxxxxxxxx';
+	
+	$tuya = new \tuyapiphp\TuyaApi( $config );
+		
+	// Get a token
+	$token = $tuya->token->get_new( )->result->access_token;
+	
+	// Get camera stream link
+	$stream = $tuya->devices( $token )->post_stream_allocate( $app_id , $camera_id , [ 'type' => 'rtsp' ] );
+        
+```
+
+Use the returned url to open the stream: `ffplay -i rtsps://xxxxxxxxx`
 
