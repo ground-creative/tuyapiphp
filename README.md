@@ -12,12 +12,6 @@ I believe all is needed is php curl for the requests.
 npm install tuyacloudnodejs
 ```
 
-and run `composer update`
-
-### Stand Alone:
-
-You must require all the needed classes manually, or you can use an autoloader [like this one](http://phptoolcase.com/guides/ptc-hm-guide.html).
-
 ## Basic Usage
 
 Use these [setup instructions](https://github.com/codetheweb/tuyapi/blob/master/docs/SETUP.md) for how to find the needed parameters.
