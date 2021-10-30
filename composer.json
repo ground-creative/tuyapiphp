@@ -1,16 +1,16 @@
 {
 	"name": "tuyapiphp/tuyapiphp" ,	
 	"type": "library" ,
-	"description": "Tuya api home management php client" ,
+	"description": "Tuya cloud api home management php client" ,
 	"keywords": [ "tuya" , "smart life" ] ,
 	"license": "GPL-3.0-or-later" ,
-	"version": "1.0.0" ,
+	"version": "1.0.1" ,
 	"minimum-stability": "stable" ,
 	"authors": 
 	[
 		{
-			"name": "Carlo Pietrobattista" ,
-			"email": "irony00100@gmail.com" ,
+			"name": "goundcreative" ,
+			"email": "carlo@ground-creative.com" ,
 			"role": "Developer"
 		}
 	] ,
