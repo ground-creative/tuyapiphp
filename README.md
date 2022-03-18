@@ -2,7 +2,7 @@
 
 This is a simple php client to interact with devices that support the tuya api.
 
-For a more ready to use solution thta will run with nodejs, you can use [this tool](https://github.com/ifsale/YourHomeServer). 
+For a more ready to use solution, you can use [this tool](https://github.com/ifsale/YourHomeServer) with nodejs.
 
 ## Requirements
 
