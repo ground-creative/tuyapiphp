@@ -25,7 +25,7 @@
 			'get_user_list'			=>	'/v1.0/users/{uid}/devices' ,
 			'get_details'			=>	'/v1.0/devices/{device_id}' ,
 			'get_logs'				=>	'/v1.0/devices/{device_id}/logs' ,
-			'get_sbdevices'			=>	'/v1.0/devices/{deviceId}/sub-devices' ,
+			'get_sbdevices'		=>	'/v1.0/devices/{deviceId}/sub-devices' ,
 			'get_factory_info'		=>	'/v1.0/devices/factory-infos' ,
 			'get_user'				=>	'/v1.0/devices/{device_id}/users/{user_id}' ,
 			'get_users'			=>	'/v1.0/devices/{device_id}/users' ,
@@ -48,7 +48,7 @@
 			'post_group'			=>	'/v1.0/device-groups' ,
 			'post_group_issued'		=>	'/v1.0/device-groups/{device_group_id}/issued' ,
 			'post_stream_allocate'	=>	'/v1.0/users/{uid}/devices/{device_id}/stream/actions/allocate' ,
-			'delete_device'		=>	'/v1.0/devices/{device_id}' ,
+			'delete_device'			=>	'/v1.0/devices/{device_id}' ,
 			'delete_user'			=>	'/v1.0/devices/{device_id}/users/{user_id}' ,
 			'delete_group'			=>	'/v1.0/device-groups/{group_id}'
 		];

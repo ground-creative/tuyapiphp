@@ -11,8 +11,8 @@
 			$this->_endpoint = $endpoint;
 			$this->_request =  strtoupper( $request );
 			$this->_token = ( $token ) ? $token : '';
-			$this->_sigHeaders = $sigHeaders; // todo
-			$this->_payload = $this->_setPayload( $payload );
+			$this->_sigHeaders = $sigHeaders; 					// todo
+			$this->_payload = $this->_setPayload( $payload );		// this property does nothing yet
 			$this->_body = ( $payload && $this->_request != 'GET' ) ? json_encode( $payload ) : '';
 			$string = [ strtoupper( $request ) , hash( 'sha256' , $this->_body ) , '' , $this->_endpoint ];
 			$stringtosign = implode( "\n" , $string );
@@ -26,12 +26,13 @@
 			if ( !$payload ){ return ''; }
 			if ( $this->_request == 'POST' ||  $this->_request == 'PUT'  )
 			{
-				return json_encode( $payload );
+				return '';// json_encode( $payload );
 			}
 			else
 			{
-				$payload = http_build_query( $payload );
-				$this->_endpoint = ( preg_match( '#\?#' , $this->_endpoint ) ) ? '&' . $payload : '?' . $payload;
+				$payload = urldecode( http_build_query( $payload ) );
+				$this->_endpoint = $this->_endpoint . 
+					( ( preg_match( '#\?#' , $this->_endpoint ) ) ? '&' . $payload : '?' . $payload );
 				return '';
 			}
 		}

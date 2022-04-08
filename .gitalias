@@ -1,0 +1,115 @@
+### A collection of shortcuts for git ########################################################
+#
+# https://github.com/ground-creative/.gitalias/blob/main/.gitalias
+# @Version 1.0.3
+#
+# Installation Instructions
+# Add the following 2 lines to your .git/config file
+# [include]
+#  path = ../.gitalias
+#
+##############################################################################
+[alias]
+
+	current = rev-parse --abbrev-ref HEAD					# get current branch
+
+	rebuild-tags = !git tag -l | xargs git tag -d && git fetch -t		# rebuild local tags from remote
+	
+	last-com = log -1 HEAD --stat							# show last commit
+	
+	list-alias = config --get-regexp alias						# show list of alias
+	
+	no-unchanged = "!f() { git update-index --no-assume-unchanged $1; }; f"
+	
+	unchanged = "!f() { git update-index --assume-unchanged $1; }; f"
+   
+	list-branches = "!f() { echo "Listing branches"; git branch -vva; }; f"
+	
+	# show list of commits, params: number of commits (optional)
+	show-com = "!f() {\
+		if [ $1 ]; then\
+			git log --pretty=oneline -n $1;\
+		else\
+			git log --pretty=oneline;\
+		fi;\
+	}; f"	
+
+	# reset commit, params: commit id (optional, the last id will be used if empty)
+	uncom = "!f() {\
+		if [ $1 ]; then\
+			git revert --no-commit --no-edit $1;\
+		else\
+			git reset --soft HEAD~1	;\
+		fi;\
+	}; f"
+
+	# add and commit all changes, params: commit message (opional, the last commit will be used if not set)
+	com-all = "!f() {\
+		echo \"\\033[33m- Adding Commit with all modifications\\033[0m\";\
+		if [ \"$1\" ]; then\
+			echo \"\\033[36m\"'-- Command: git commit -am \"'\"$1\"'\"'\"\\033[0m\";\
+			git commit -am \"$1\";\
+		else\
+			echo \"\\033[36m-- Command: git commit -a --reuse-message=HEAD\\033[0m\";\
+			git commit -a --reuse-message=HEAD;\
+		fi;\
+	}; f"
+	
+	# add,commit and push all changes, params: commit message (opional, the last commit will be used if not set)
+	push-all = "!f() {\
+		if [ \"$1\" ]; then\
+			git com-all \"$1\";\
+		else\
+			git com-all;\
+		fi;\
+		echo \"\\033[33m- Pushing commit\\033[0m\";\
+		echo \"\\033[36m-- Command: git push origin\\033[0m\";\
+		git push origin;\
+	}; f"
+	
+	# show config details, ex: "git show-cmd" "git show-cmd alias" "git show-cmd alias push"
+	show-cmd = "!f() { \
+		sep="?" ;\
+		name=${1:-alias};\
+		echo -n -e '\\033[48;2;255;255;01m' ;\
+		echo -n -e '\\033[38;2;255;0;01m' ;\
+		echo "$name"; \
+		echo -n -e '\\033[m' ;\
+		git config --get-regexp ^$name\\..*$2+ | \
+		cut -c 1-40 | \
+		sed -e s/^$name.// \
+		-e s/\\ /\\ $(printf $sep)--\\>\\ / | \
+		column -t -s $(printf $sep) | \
+		sort -k 1 ;\
+	}; f"
+	
+	# update latest release files from current branch
+	update-release = "!f() {\
+   		lastrev=$(git rev-list --tags --max-count=1);\
+		tag=$(git describe --tags "$lastrev");\
+		lastcom=$(git log -1 --pretty=%B);\
+		commit_msg=\""ci: \"$lastcom\""\";\
+		echo \"\\033[33m- Deleting release $tag\\033[0m\";\
+		echo \"\\033[36m\"'-- Command: git tag -f -a \"'\"$tag\"'\" -m \"'\"$commit_msg\"'\"'\"\\033[0m\";\
+		git tag -f -a $tag -m \"$commit_msg\";\
+		target=$(git rev-parse --abbrev-ref HEAD);\
+		echo \"\\033[33m- Creating release with tag $tag from target $target\\033[0m\";\
+		echo \"\\033[36m-- Command: git push origin -f $tag\\033[0m\";\
+		git push origin -f $tag;\
+	}; f"
+	
+	# upgrade the script
+	upgrade-script =  "!f() {\
+		wget https://raw.githubusercontent.com/ground-creative/.gitalias/main/.gitalias -O .gitalias;\
+	}; f"
+	
+	# delete branch/tag, params: branch/tag name (optional the last tag will deleted if not set)
+	delete-branch = "!f() {\
+		if [ $1 ]; then\
+			git push origin --delete $1;\
+		else\
+			lastrev=$(git rev-list --tags --max-count=1);\
+			tag=$(git describe --tags "$lastrev");\
+			git push origin --delete $tag;\
+		fi;\
+	}; f"
