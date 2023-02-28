@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="tests/bootstrap.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </coverage>
+  <testsuites>
+    <testsuite name="components">
+      <directory>./tests/tuyapiphp/TokenTest.php</directory>
+      <directory>./tests/tuyapiphp/RequestTest.php</directory>
+      <directory>./tests/tuyapiphp/ConfigTest.php</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <var name="TUYA_ACCESS_KEY" value=""/>
+    <var name="TUYA_SECRET_KEY" value=""/>
+    <var name="TUYA_BASE_URL" value="https://openapi.tuyaus.com"/>
+    <var name="TUYA_APP_ID" value=""/>
+    <var name="TUYA_DEVICE_ID" value=""/>
+  </php>
+</phpunit>

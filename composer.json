@@ -1,23 +1,27 @@
 {
-	"name": "tuyapiphp/tuyapiphp" ,	
-	"type": "library" ,
-	"description": "Tuya cloud api home management php client" ,
-	"keywords": [ "tuya" , "smart life" ] ,
-	"license": "GPL-3.0-or-later" ,
-	"version": "1.0.1" ,
-	"minimum-stability": "stable" ,
+	"name": "tuyapiphp/tuyapiphp",	
+	"type": "library",
+	"description": "Tuya cloud api home management php client",
+	"keywords": [ "tuya" , "smart life" ],
+	"license": "GPL-3.0-or-later",
+	"version": "1.1.1",
+	"minimum-stability": "stable",
 	"authors": 
 	[
 		{
-			"name": "goundcreative" ,
+			"name": "groundcreative" ,
 			"email": "carlo@ground-creative.com" ,
 			"role": "Developer"
 		}
-	] ,
+	],
 	"require": 
 	{
-		"php": ">=5.3.0"
-	} ,
+		"php": ">=7.4"
+	},
+	"require-dev": 
+	{	
+		"phpunit/phpunit": "*"
+	},
 	"autoload": 
 	{
 		"psr-4": 
