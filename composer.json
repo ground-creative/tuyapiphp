@@ -16,7 +16,7 @@
 	],
 	"require": 
 	{
-		"php": ">=7.4"
+		"php": ">=5.3"
 	},
 	"require-dev": 
 	{	
