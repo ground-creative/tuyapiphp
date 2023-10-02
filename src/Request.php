@@ -31,9 +31,16 @@
 			else
 			{
 				ksort($payload);
+				/*$paramsJoined = [];
+				foreach($payload as $param => $value) 
+				{
+					$paramsJoined[] = "$param=$value";
+				}
+				$payload = implode('&', $paramsJoined);*/
 				$payload = http_build_query($payload);
+				$payload = str_replace("%2C", ",", $payload);	// fix comma url encoding
 				$this->_endpoint = $this->_endpoint . ((preg_match('#\?#', 
-									$this->_endpoint)) ? '&' . $payload : '?' . $payload);
+									$this->_endpoint)) ? '&' . $payload : '?' . $payload);	
 				return '';
 			}
 		}
@@ -60,7 +67,13 @@
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 			curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+			curl_setopt($ch, CURLOPT_FAILONERROR, true);
+			curl_setopt($ch, CURLOPT_HTTP_VERSION, $this->_config['curl_http_version']);
 			$result = curl_exec($ch);
+			if (curl_errno($ch))
+			{ 
+				$this->_debug->output('Curl error:', curl_error($ch));
+			}
 			$return = json_decode($result, $this->_config['associative']);
 			$this->_debug->output('Result:', $return);
 			return $return;

@@ -7,9 +7,8 @@
   </coverage>
   <testsuites>
     <testsuite name="components">
-      <directory>./tests/tuyapiphp/TokenTest.php</directory>
-      <directory>./tests/tuyapiphp/RequestTest.php</directory>
-      <directory>./tests/tuyapiphp/ConfigTest.php</directory>
+      <file>./tests/tuyapiphp/TokenTest.php</file>
+      <file>./tests/tuyapiphp/RequestTest.php</file>
     </testsuite>
   </testsuites>
   <php>

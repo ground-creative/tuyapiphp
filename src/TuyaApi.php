@@ -53,11 +53,12 @@
 		
 		protected $_config = 
 		[
-			'accessKey' 	=> '' ,
-			'secretKey' 	=> '' ,
-			'baseUrl'		=> '' ,
-			'debug'		=> false ,
-			'associative'	=> false
+			'accessKey' 		=> '',
+			'secretKey' 		=> '',
+			'baseUrl'			=> '',
+			'debug'			=> false,
+			'associative'		=> false,
+			'curl_http_version'	=> CURL_HTTP_VERSION_1_1
 		];
 		
 		protected $_required = [ 'accessKey' , 'secretKey' , 'baseUrl' ];
