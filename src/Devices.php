@@ -4,21 +4,15 @@
 
 	Class Devices
 	{
-        protected array $_config;
-
-		public function __construct( $config , $token )
-		{
-			$this->_config = $config;
-			$this->_token = $token;
-		}
+        public function __construct(protected array $_config, protected $_token)
+  {
+  }
 		
 		public function __call( $name , $args = [ ] )
 		{
 			$request = new Caller( $this->_config , $this->_endpoints , $this->_token );
 			return $request->send( $name , $args );
 		}
-
-		protected $_token = '';
 		
 		protected $_endpoints = 
 		[

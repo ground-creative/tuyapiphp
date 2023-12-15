@@ -4,17 +4,14 @@
 
 	Class Request
 	{
-		public function __construct($config, $endpoint, $request, $token = null, $payload = null, $sigHeaders = null)
+		public function __construct(protected array $_config, protected string $_endpoint, $request, $token = null, $payload = null, protected mixed $_sigHeaders = null)
 		{
-			$this->_config = $config;
 			$this->_time = round(microtime(true) * 1000);
-			$this->_endpoint = $endpoint;
-			$this->_request = strtoupper($request);
-			$this->_token = ($token) ? $token : '';
-			$this->_sigHeaders = $sigHeaders; // todo
+			$this->_request = strtoupper((string) $request);
+			$this->_token = $token ?: ''; // todo
 			$this->_payload = $this->_setPayload($payload);
-			$this->_body = ($payload && $this->_request != 'GET') ? json_encode($payload) : '';
-			$string = [strtoupper($request), hash('sha256' , $this->_body), '', $this->_endpoint];
+			$this->_body = ($payload && $this->_request != 'GET') ? json_encode($payload, JSON_THROW_ON_ERROR) : '';
+			$string = [strtoupper((string) $request), hash('sha256' , $this->_body), '', $this->_endpoint];
 			$stringtosign = implode("\n", $string);
 			$sign = $this->_sign($this->_time, $stringtosign);
 			$this->_headers = $this->_headers($sign);
@@ -26,7 +23,7 @@
 			if (!$payload){ return ''; }
 			if ($this->_request == 'POST' ||  $this->_request == 'PUT')
 			{
-				return json_encode($payload);
+				return json_encode($payload, JSON_THROW_ON_ERROR);
 			}
 			else
 			{
@@ -52,7 +49,7 @@
 			if ($this->_body)
 			{
 				$this->_debug->output('Payload:', json_decode( 
-							$this->_body , $this->_config['associative']));
+							$this->_body , $this->_config['associative'], 512, JSON_THROW_ON_ERROR));
 			}
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL , $this->_config['baseUrl'] . $this->_endpoint);
@@ -74,7 +71,7 @@
 			{ 
 				$this->_debug->output('Curl error:', curl_error($ch));
 			}
-			$return = json_decode($result, $this->_config['associative']);
+			$return = json_decode($result, $this->_config['associative'], 512, JSON_THROW_ON_ERROR);
 			$this->_debug->output('Result:', $return);
 			return $return;
 		}
@@ -82,7 +79,7 @@
 		protected function _sign($time, $stringToSign)
 		{
 			$sign = strtoupper(hash_hmac('sha256', $this->_config['accessKey'] . 
-					$this->_token . $time . $stringToSign , $this->_config['secretKey']));
+					$this->_token . $time . $stringToSign , (string) $this->_config['secretKey']));
 			return $sign;
 		}	
 
@@ -109,11 +106,7 @@
 			return $headers;
 		}
 		
-		protected array $_config = [];
-		
 		protected string|float $_time = '';
-		
-		protected string $_endpoint = '';
 		
 		protected string|array $_headers = '';
 		
@@ -124,6 +117,4 @@
 		protected string|false $_body = '';
 		
 		protected string|false $_payload = '';
-		
-		protected mixed $_sigHeaders = '';
 	}

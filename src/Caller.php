@@ -5,15 +5,9 @@
 	Class Caller
 	{
 
-        protected array $_config;
-        protected $_endpoints;
-
-		public function __construct( $config , $endpoints , $token = null )
-		{
-			$this->_config = $config;
-			$this->_endpoints = $endpoints;
-			$this->_token = $token;
-		}
+        public function __construct(protected array $_config, protected $_endpoints, protected $_token = null)
+  {
+  }
 	
 		public function send( $name , $args = [ ] )
 		{
@@ -30,7 +24,7 @@
 				die( );
 			}
 			$uri = $this->_endpoints[ $name ];
-			preg_match( '/put_|get_|post_|delete_/' , $name , $matches );
+			preg_match( '/put_|get_|post_|delete_/' , (string) $name , $matches );
 			$request = str_replace( '_' , '' , $matches[ 0 ] );
 			foreach ( $args as $arg )
 			{
@@ -47,7 +41,7 @@
 				}
 				else
 				{
-					$uri = preg_replace( '/\{.*?\}/' , $arg , $uri , 1 );
+					$uri = preg_replace( '/\{.*?\}/' , (string) $arg , (string) $uri , 1 );
 				}
 			}
 			$request = new Request( $this->_config , $uri , $request , 
@@ -58,6 +52,4 @@
 		protected $_payload = [ ];
 		
 		protected $_sigHeaders = [ ];
-		
-		protected $_token = '';
 	}

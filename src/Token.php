@@ -4,12 +4,9 @@
 
 	Class Token
 	{
-        protected array $_config;
-
-		public function __construct( $config )
-		{
-			$this->_config = $config;
-		}
+        public function __construct(protected array $_config)
+  {
+  }
 		
 		public function __call( $name , $args = [ ] )
 		{
