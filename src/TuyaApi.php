@@ -15,6 +15,18 @@ namespace tuyapiphp;
 
 class TuyaApi
 {
+    protected $_config =
+        [
+            'accessKey' => '',
+            'secretKey' => '',
+            'baseUrl' => '',
+            'debug' => false,
+            'associative' => false,
+            'curl_http_version' => \CURL_HTTP_VERSION_1_1,
+        ];
+
+    protected $_required = ['accessKey', 'secretKey', 'baseUrl'];
+
     public function __construct($config)
     {
         $this->_checkConfig($config);
@@ -49,16 +61,4 @@ class TuyaApi
             exit;
         }
     }
-
-    protected $_config =
-    [
-        'accessKey' => '',
-        'secretKey' => '',
-        'baseUrl' => '',
-        'debug' => false,
-        'associative' => false,
-        'curl_http_version' => CURL_HTTP_VERSION_1_1,
-    ];
-
-    protected $_required = ['accessKey', 'secretKey', 'baseUrl'];
 }

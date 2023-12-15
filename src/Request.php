@@ -4,6 +4,18 @@ namespace tuyapiphp;
 
 class Request
 {
+    protected string|float $_time = '';
+
+    protected string|array $_headers = '';
+
+    protected string $_request = '';
+
+    protected mixed $_token = '';
+
+    protected string|false $_body = '';
+
+    protected string|false $_payload = '';
+
     public function __construct(protected array $_config, protected string $_endpoint, $request, $token = null, $payload = null, protected mixed $_sigHeaders = null)
     {
         $this->_time = round(microtime(true) * 1000);
@@ -103,16 +115,4 @@ class Request
 
         return $headers;
     }
-
-    protected string|float $_time = '';
-
-    protected string|array $_headers = '';
-
-    protected string $_request = '';
-
-    protected mixed $_token = '';
-
-    protected string|false $_body = '';
-
-    protected string|false $_payload = '';
 }

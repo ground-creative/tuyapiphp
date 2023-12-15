@@ -4,6 +4,14 @@ namespace tuyapiphp;
 
 class Token
 {
+    protected $_token = '';
+
+    protected $_endpoints =
+        [
+            'get_new' => '/v1.0/token?grant_type=1',
+            'get_refresh' => '/v1.0/token/{refresh_token}',
+        ];
+
     public function __construct(protected array $_config)
     {
     }
@@ -14,12 +22,4 @@ class Token
 
         return $request->send($name, $args);
     }
-
-    protected $_token = '';
-
-    protected $_endpoints =
-    [
-        'get_new' => '/v1.0/token?grant_type=1',
-        'get_refresh' => '/v1.0/token/{refresh_token}',
-    ];
 }

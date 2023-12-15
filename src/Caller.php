@@ -4,6 +4,10 @@ namespace tuyapiphp;
 
 class Caller
 {
+    protected $_payload = [];
+
+    protected $_sigHeaders = [];
+
     public function __construct(protected array $_config, protected $_endpoints, protected $_token = null)
     {
     }
@@ -37,8 +41,4 @@ class Caller
 
         return $request->call();
     }
-
-    protected $_payload = [];
-
-    protected $_sigHeaders = [];
 }

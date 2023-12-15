@@ -4,17 +4,6 @@ namespace tuyapiphp;
 
 class Devices
 {
-    public function __construct(protected array $_config, protected $_token)
-    {
-    }
-
-    public function __call($name, $args = [])
-    {
-        $request = new Caller($this->_config, $this->_endpoints, $this->_token);
-
-        return $request->send($name, $args);
-    }
-
     protected $_endpoints =
     [
         'get_app_list' => '/v1.0/users/{appId}/devices',
@@ -49,4 +38,15 @@ class Devices
         'delete_user' => '/v1.0/devices/{device_id}/users/{user_id}',
         'delete_group' => '/v1.0/device-groups/{group_id}',
     ];
+
+    public function __construct(protected array $_config, protected $_token)
+    {
+    }
+
+    public function __call($name, $args = [])
+    {
+        $request = new Caller($this->_config, $this->_endpoints, $this->_token);
+
+        return $request->send($name, $args);
+    }
 }
