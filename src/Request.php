@@ -16,6 +16,8 @@ class Request
 
     protected string|false $_payload = '';
 
+    protected DebugHandler $_debug;
+
     public function __construct(protected array $_config, protected string $_endpoint, $request, $token = null, $payload = null, protected mixed $_sigHeaders = null)
     {
         $this->_time = round(microtime(true) * 1000);
