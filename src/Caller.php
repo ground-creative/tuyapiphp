@@ -4,7 +4,10 @@
 
 	Class Caller
 	{
-	
+
+        protected array $_config;
+        protected $_endpoints;
+
 		public function __construct( $config , $endpoints , $token = null )
 		{
 			$this->_config = $config;

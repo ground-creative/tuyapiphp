@@ -109,21 +109,21 @@
 			return $headers;
 		}
 		
-		protected $_config = [];
+		protected array $_config = [];
 		
-		protected $_time = '';
+		protected string|float $_time = '';
 		
-		protected $_endpoint = '';
+		protected string $_endpoint = '';
 		
-		protected $_headers = '';
+		protected string|array $_headers = '';
 		
-		protected $_request = '';
+		protected string $_request = '';
 		
-		protected $_token = '';
+		protected mixed $_token = '';
 		
-		protected $_body = '';
+		protected string|false $_body = '';
 		
-		protected $_payload = '';
+		protected string|false $_payload = '';
 		
-		protected $_sigHeaders = '';
+		protected mixed $_sigHeaders = '';
 	}

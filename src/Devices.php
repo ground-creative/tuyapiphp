@@ -4,6 +4,8 @@
 
 	Class Devices
 	{
+        protected array $_config;
+
 		public function __construct( $config , $token )
 		{
 			$this->_config = $config;

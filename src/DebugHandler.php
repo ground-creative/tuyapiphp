@@ -4,6 +4,8 @@
 
 	Class DebugHandler
 	{
+        protected array $_config;
+
 		public function __construct($config)
 		{
 			$this->_config = $config;
