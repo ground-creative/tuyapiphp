@@ -19,7 +19,7 @@
 		*/
 		public function testGetCallWithParams()
 		{
-			$request = TokenTest::$_tuya->devices(TokenTest::$_access_token)->get_logs($GLOBALS['TUYA_DEVICE_ID'], ["type" => "1,2" ,"start_time" => 1677340155, "end_time" => 1677599355]);
+			$request = TokenTest::$_tuya->devices(TokenTest::$_access_token)->get_logs($GLOBALS['TUYA_DEVICE_ID'], ["type" => "1,2" ,"start_time" => 1_677_340_155, "end_time" => 1_677_599_355]);
 			$this->assertTrue($request->success);
 		}
 		/**
