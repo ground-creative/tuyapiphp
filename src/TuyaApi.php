@@ -6,7 +6,7 @@
  *
  * @category 	Library
  *
- * @version	1.0.0
+ * @version	1.1.3
  *
  * @author   	Irony <irony00100@gmail.com>
  */
