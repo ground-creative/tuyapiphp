@@ -2,6 +2,8 @@
 
 This is a simple php client to interact with devices that support the tuya api.
 
+*A version of the lib for nodejs is hosted here: https://github.com/ground-creative/tuyacloudnodejs*
+
 *If you are looking for a more ready to use solution or u need to control devices from different brands, you can use [this tool](https://github.com/ifsale/YourHomeServer) with nodejs.*
 
 ## Requirements
