@@ -38,6 +38,11 @@ class TuyaApi
         return new Devices($this->_config, $token);
     }
 
+    public function scenes($token)
+    {
+        return new Scenes($this->_config, $token);
+    }
+
     public function token()
     {
         return new Token($this->_config);
